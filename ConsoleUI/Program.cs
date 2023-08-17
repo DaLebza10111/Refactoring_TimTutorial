@@ -15,34 +15,34 @@ namespace ConsoleUI
             int i;
             double ttl, t;
 
-            List<TimeSheetEntry> ents = LoadTimesheets();
+            List<TimeSheetEntry> timesheet = LoadTimesheets();
 
 			ttl = 0;
-            for (i = 0; i < ents.Count; i++)
+            for (i = 0; i < timesheet.Count; i++)
             {
-                if (ents[i].WorkDone.ToLower().Contains("acme"))
+                if (timesheet[i].WorkDone.ToLower().Contains("acme"))
                 {
-                    ttl += ents[i].HoursWorked;
+                    ttl += timesheet[i].HoursWorked;
                 }
             }
             Console.WriteLine("Simulating Sending email to Acme");
             Console.WriteLine("Your bill is $" + ttl * 150 + " for the hours worked.");
 
             ttl = 0;
-            for (i = 0; i < ents.Count; i++)
+            for (i = 0; i < timesheet.Count; i++)
             {
-                if (ents[i].WorkDone.ToLower().Contains("abc"))
+                if (timesheet[i].WorkDone.ToLower().Contains("abc"))
                 {
-                    ttl += ents[i].HoursWorked;
+                    ttl += timesheet[i].HoursWorked;
                 }
             }
             Console.WriteLine("Simulating Sending email to ABC");
             Console.WriteLine("Your bill is $" + ttl * 125 + " for the hours worked.");
 
             ttl = 0;
-            for (i = 0; i < ents.Count; i++)
+            for (i = 0; i < timesheet.Count; i++)
             {
-                ttl += ents[i].HoursWorked;
+                ttl += timesheet[i].HoursWorked;
             }
             if (ttl > 40)
             {
