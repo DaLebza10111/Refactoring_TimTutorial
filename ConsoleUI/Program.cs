@@ -110,6 +110,42 @@ namespace ConsoleUI
             Console.Write("Press any key to exit application...");
             Console.ReadKey();
         }
+
+        private static List<TimeSheetEntry> LoadTimesheets()
+        {
+			List < TimeSheetEntry > output = new List<TimeSheetEntry> ();
+
+			while (cont == true)
+			{
+				Console.Write("Enter what you did: ");
+				w = Console.ReadLine();
+				Console.Write("How long did you do it for: ");
+				rawTimeWorked = Console.ReadLine();
+
+				while (double.TryParse(rawTimeWorked, out t) == false)
+				{
+					Console.WriteLine();
+					Console.WriteLine("Invalid number given");
+					Console.Write("How long did you do it for: ");
+					rawTimeWorked = Console.ReadLine();
+				}
+
+				ent = new TimeSheetEntry();
+				ent.HoursWorked = t;
+				ent.WorkDone = w;
+				output.Add(ent);
+
+				Console.Write("Do you want to enter more time (yes/no): ");
+				answer = Console.ReadLine();
+				cont = false;
+
+				if (answer.ToLower() == "yes")
+				{
+					cont = true;
+				}
+			}
+		}
+
     }
 
     public class TimeSheetEntry
