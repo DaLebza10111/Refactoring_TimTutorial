@@ -33,7 +33,7 @@ namespace ConsoleUI
 				Console.WriteLine("You will get paid $" + totalHours * 10 + " for your time.");
 			}
 
-			Console.WriteLine();
+            Console.WriteLine();
 			Console.Write("Press any key to exit application...");
 			Console.ReadKey();
 		}
@@ -80,7 +80,9 @@ namespace ConsoleUI
 
 			} while (enterMoreTimesheet.ToLower() == "yes");
 
-			return output;
+            Console.WriteLine();
+
+            return output;
 		}
 
 	}
