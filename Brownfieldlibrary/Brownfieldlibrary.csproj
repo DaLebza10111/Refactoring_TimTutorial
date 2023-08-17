@@ -43,9 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccessSimulator.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="ProcessTimeSheet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TimeSheetEntry.cs" />
+    <Compile Include="Models\TimeSheetEntry.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

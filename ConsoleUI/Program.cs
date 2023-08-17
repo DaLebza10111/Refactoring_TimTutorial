@@ -1,4 +1,5 @@
 ﻿using Brownfieldlibrary;
+using Brownfieldlibrary.Models;
 using System;
 using System.Collections.Generic;
 
@@ -13,10 +14,12 @@ namespace ConsoleUI
 			double totalHours;
 
 			List<TimeSheetEntry> timesheet = LoadTimesheets();
+			List<CustomerModel> customers = DataAccessSimulator.GetCustomers();
 
-			BillCustomer(timesheet, "Acme", 150);
-
-			BillCustomer(timesheet, "AbC", 150);
+			foreach (var customer in customers)
+			{
+				BillCustomer(timesheet, customer);
+			}
 
 			totalHours = 0;
 			for (i = 0; i < timesheet.Count; i++)
@@ -38,11 +41,11 @@ namespace ConsoleUI
 			Console.ReadKey();
 		}
 
-		private static void BillCustomer(List<TimeSheetEntry> timesheet, string companyName, decimal hourlyrate)
+		private static void BillCustomer(List<TimeSheetEntry> timesheet, CustomerModel customer)
 		{
-			double totalHours = ProcessTimeSheet.GetHoursworked(timesheet, companyName);
-			Console.WriteLine($"Simulating Sending email to {companyName}");
-			Console.WriteLine("Your bill is $" + (decimal)totalHours * hourlyrate + " for the hours worked.");
+			double totalHours = ProcessTimeSheet.GetHoursworked(timesheet, customer.CustomerName);
+			Console.WriteLine($"Simulating Sending email to {customer.CustomerName}");
+			Console.WriteLine("Your bill is $" + (decimal)totalHours * customer.hourlyRate + " for the hours worked.");
 		}
 
 		private static List<TimeSheetEntry> LoadTimesheets()

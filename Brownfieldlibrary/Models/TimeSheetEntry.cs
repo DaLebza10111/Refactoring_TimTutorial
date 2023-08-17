@@ -1,5 +1,5 @@
 ﻿
-namespace Brownfieldlibrary
+namespace Brownfieldlibrary.Models
 {
 
 	public class TimeSheetEntry
