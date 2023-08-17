@@ -114,19 +114,20 @@ namespace ConsoleUI
         private static List<TimeSheetEntry> LoadTimesheets()
         {
 			List < TimeSheetEntry > output = new List<TimeSheetEntry> ();
-            bool enterMoreTimesheet = false;
+			string enterMoreTimesheet = string.Empty;
 
-            //do loop executes 1 or more time and a while loop executes 0 or more times.
+			//do loop executes 1 or more time and a while loop executes 0 or more times.
 
-            do
+			do
             {
-                Console.Write("Enter what you did: ");
+				double hoursworked;
+				Console.Write("Enter what you did: ");
                 string workdone = Console.ReadLine();
 
                 Console.Write("How long did you do it for: ");
                 string rawTimeWorked = Console.ReadLine();
 
-                while (double.TryParse(rawTimeWorked, out double t) == false)
+                while (double.TryParse(rawTimeWorked, out hoursworked) == false)
                 {
                     Console.WriteLine();
                     Console.WriteLine("Invalid number given");
@@ -135,20 +136,17 @@ namespace ConsoleUI
                 }
 
                 TimeSheetEntry timesheet = new TimeSheetEntry();
-                timesheet.HoursWorked = t;
-                timesheet.WorkDone = w;
+                timesheet.HoursWorked = hoursworked;
+                timesheet.WorkDone = workdone;
                 output.Add(timesheet);
 
                 Console.Write("Do you want to enter more time (yes/no): ");
-                answer = Console.ReadLine();
-                enterMoreTimesheet = false;
+                enterMoreTimesheet = Console.ReadLine();
+                
 
-                if (answer.ToLower() == "yes")
-                {
-                    enterMoreTimesheet = true;
-                }
+            } while(enterMoreTimesheet.ToLower() == "yes");
 
-            } while(enterMoreTimesheet == true); 
+            return output;
 		}
 
     }
