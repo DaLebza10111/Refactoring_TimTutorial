@@ -121,11 +121,12 @@ namespace ConsoleUI
             do
             {
                 Console.Write("Enter what you did: ");
-                w = Console.ReadLine();
-                Console.Write("How long did you do it for: ");
-                rawTimeWorked = Console.ReadLine();
+                string workdone = Console.ReadLine();
 
-                while (double.TryParse(rawTimeWorked, out t) == false)
+                Console.Write("How long did you do it for: ");
+                string rawTimeWorked = Console.ReadLine();
+
+                while (double.TryParse(rawTimeWorked, out double t) == false)
                 {
                     Console.WriteLine();
                     Console.WriteLine("Invalid number given");
@@ -146,7 +147,8 @@ namespace ConsoleUI
                 {
                     enterMoreTimesheet = true;
                 }
-            } (enterMoreTimesheet == true); 
+
+            } while(enterMoreTimesheet == true); 
 		}
 
     }
