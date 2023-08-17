@@ -16,10 +16,7 @@ namespace ConsoleUI
 			List<TimeSheetEntry> timesheet = LoadTimesheets();
 			List<CustomerModel> customers = DataAccessSimulator.GetCustomers();
 
-			foreach (var customer in customers)
-			{
-				BillCustomer(timesheet, customer);
-			}
+			customers.ForEach(x => BillCustomer(timesheet, x));
 
 			totalHours = 0;
 			for (i = 0; i < timesheet.Count; i++)
