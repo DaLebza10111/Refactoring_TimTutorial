@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Brownfieldlibrary;
+using System;
 using System.Collections.Generic;
 
 // Please note - THIS IS A BAD APPLICATION - DO NOT REPLICATE WHAT IT DOES
@@ -59,7 +60,7 @@ namespace ConsoleUI
 
         private static List<TimeSheetEntry> LoadTimesheets()
         {
-			List < TimeSheetEntry > output = new List<TimeSheetEntry> ();
+			List <TimeSheetEntry> output = new List<TimeSheetEntry> ();
 			string enterMoreTimesheet = string.Empty;
 
 			//do loop executes 1 or more time and a while loop executes 0 or more times.
@@ -97,9 +98,4 @@ namespace ConsoleUI
 
     }
 
-    public class TimeSheetEntry
-    {
-        public string WorkDone;
-        public double HoursWorked;
-    }
 }
