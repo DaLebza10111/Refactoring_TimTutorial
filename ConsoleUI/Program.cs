@@ -114,36 +114,39 @@ namespace ConsoleUI
         private static List<TimeSheetEntry> LoadTimesheets()
         {
 			List < TimeSheetEntry > output = new List<TimeSheetEntry> ();
+            bool enterMoreTimesheet = false;
 
-			while (cont == true)
-			{
-				Console.Write("Enter what you did: ");
-				w = Console.ReadLine();
-				Console.Write("How long did you do it for: ");
-				rawTimeWorked = Console.ReadLine();
+            //do loop executes 1 or more time and a while loop executes 0 or more times.
 
-				while (double.TryParse(rawTimeWorked, out t) == false)
-				{
-					Console.WriteLine();
-					Console.WriteLine("Invalid number given");
-					Console.Write("How long did you do it for: ");
-					rawTimeWorked = Console.ReadLine();
-				}
+            do
+            {
+                Console.Write("Enter what you did: ");
+                w = Console.ReadLine();
+                Console.Write("How long did you do it for: ");
+                rawTimeWorked = Console.ReadLine();
 
-				ent = new TimeSheetEntry();
-				ent.HoursWorked = t;
-				ent.WorkDone = w;
-				output.Add(ent);
+                while (double.TryParse(rawTimeWorked, out t) == false)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Invalid number given");
+                    Console.Write("How long did you do it for: ");
+                    rawTimeWorked = Console.ReadLine();
+                }
 
-				Console.Write("Do you want to enter more time (yes/no): ");
-				answer = Console.ReadLine();
-				cont = false;
+                TimeSheetEntry timesheet = new TimeSheetEntry();
+                timesheet.HoursWorked = t;
+                timesheet.WorkDone = w;
+                output.Add(timesheet);
 
-				if (answer.ToLower() == "yes")
-				{
-					cont = true;
-				}
-			}
+                Console.Write("Do you want to enter more time (yes/no): ");
+                answer = Console.ReadLine();
+                enterMoreTimesheet = false;
+
+                if (answer.ToLower() == "yes")
+                {
+                    enterMoreTimesheet = true;
+                }
+            } (enterMoreTimesheet == true); 
 		}
 
     }
