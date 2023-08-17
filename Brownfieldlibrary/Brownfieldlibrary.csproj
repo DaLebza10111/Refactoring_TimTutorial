@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessSimulator.cs" />
     <Compile Include="ProcessTimeSheet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimeSheetEntry.cs" />
