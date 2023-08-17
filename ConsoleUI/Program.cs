@@ -15,6 +15,7 @@ namespace ConsoleUI
 
 			List<TimeSheetEntry> timesheet = LoadTimesheets();
 			List<CustomerModel> customers = DataAccessSimulator.GetCustomers();
+			EmployeeModel employee = DataAccessSimulator.GetCurrentEmployee();
 
 			customers.ForEach(x => BillCustomer(timesheet, x));
 
