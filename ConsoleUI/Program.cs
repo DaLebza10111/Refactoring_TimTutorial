@@ -10,33 +10,24 @@ namespace ConsoleUI
 		static void Main(string[] args)
 		{
 
-			int i;
-			double totalHours;
-
 			List<TimeSheetEntry> timesheet = LoadTimesheets();
 			List<CustomerModel> customers = DataAccessSimulator.GetCustomers();
 			EmployeeModel employee = DataAccessSimulator.GetCurrentEmployee();
 
 			customers.ForEach(x => BillCustomer(timesheet, x));
 
-			totalHours = 0;
-			for (i = 0; i < timesheet.Count; i++)
-			{
-				totalHours += timesheet[i].HoursWorked;
-			}
+			PayEmployee(timesheet, employee);
 
-			if (totalHours > 40)
-			{
-				Console.WriteLine("You will get paid $" + (((totalHours - 40) * 15) + (40 * 10)) + " for your work.");
-			}
-			else
-			{
-				Console.WriteLine("You will get paid $" + totalHours * 10 + " for your time.");
-			}
-
-            Console.WriteLine();
+			Console.WriteLine();
 			Console.Write("Press any key to exit application...");
 			Console.ReadKey();
+		}
+
+		private static void PayEmployee(List<TimeSheetEntry> timeSheets, EmployeeModel employee)
+		{
+			decimal totalPay = ProcessTimeSheet.GetEmployeeRate(timeSheets, employee);
+			Console.WriteLine($"You will get paid ${totalPay} for your time.");
+
 		}
 
 		private static void BillCustomer(List<TimeSheetEntry> timesheet, CustomerModel customer)
