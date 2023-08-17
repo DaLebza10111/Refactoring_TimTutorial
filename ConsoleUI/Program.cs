@@ -12,7 +12,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            string w, rawTimeWorked;
+
             int i;
             double ttl, t;
 
